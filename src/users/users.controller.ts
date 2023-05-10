@@ -1,13 +1,18 @@
 import { Request, Response, NextFunction } from "express";
+import { injectable, inject } from 'inversify';
 import { BaseController } from '../common/base.controller';
 import { HTTPError } from '../errors/http-error.class';
-import { LoggerService } from '../logger/logger.service';
+import { ILogger } from '../logger/logger.interface';
+import { TYPES } from '../types';
+import "reflect-metadata";
+import { IUserController } from './users.interface';
 
-export class UserController extends BaseController {
+@injectable()
+export class UserController extends BaseController implements IUserController {
 	constructor(
-		logger: LoggerService
+		@inject(TYPES.ILogger) private loggerService: ILogger
 	) {
-		super(logger);
+		super(loggerService);
 
 		this.bindRoutes([
 			{
@@ -24,8 +29,8 @@ export class UserController extends BaseController {
 	}
 
 	login(req: Request, res: Response, next: NextFunction) {
-		this.ok(res, "login");
-		// next(new HTTPError(401, "Пользователь не авторизован", "login"))
+		// this.ok(res, "login");
+		next(new HTTPError(401, "Пользователь не авторизован", "login"))
 	}
 
 	register(req: Request, res: Response, next: NextFunction) {
