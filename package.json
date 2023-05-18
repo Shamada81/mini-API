@@ -6,6 +6,10 @@
   "type": "commonjs",
   "scripts": {
     "start": "node ./dist/main.js",
+    "dev": "nodemon",
+    "dev:inspect": "nodemon -e ts,json --exec node --inspect=localhost:9000 -r ts-node/register src/main.ts",
+    "lint": "eslint ./src/**",
+    "lint:fix": "eslint ./src/** --fix",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,11 +25,20 @@
   "homepage": "https://github.com/Shamada81/mini-API#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "tslog": "^3.2.2",
+    "inversify": "^6.0.1",
     "reflect-metadata": "^0.1.13",
-    "inversify": "^6.0.1"
+    "tslog": "^3.2.2"
   },
   "devDependencies": {
-    "@types/express": "^4.17.17"
+    "@types/express": "^4.17.17",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.4.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.4.4"
   }
 }
