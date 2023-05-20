@@ -8,6 +8,7 @@
     "start": "node ./dist/main.js",
     "dev": "nodemon",
     "dev:inspect": "nodemon -e ts,json --exec node --inspect=localhost:9000 -r ts-node/register src/main.ts",
+    "generate": "prisma generate",
     "lint": "eslint ./src/**",
     "lint:fix": "eslint ./src/** --fix",
     "build": "tsc",
@@ -24,10 +25,12 @@
   },
   "homepage": "https://github.com/Shamada81/mini-API#readme",
   "dependencies": {
+    "@prisma/client": "^4.14.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "inversify": "^6.0.1",
     "reflect-metadata": "^0.1.13",
@@ -43,6 +46,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.22",
     "prettier": "^2.4.1",
+    "prisma": "^4.14.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.4.4"
   }
