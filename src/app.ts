@@ -51,4 +51,8 @@ export class App {
 		const handlerBinding = this.exeptionFilter.catch.bind(this.exeptionFilter);
 		this.app.use(handlerBinding);
 	}
+
+	public close(): void {
+		this.server.close();
+	}
 }
